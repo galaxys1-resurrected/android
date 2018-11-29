@@ -1,0 +1,27 @@
+From ac276527063a1b6d87479305a48899d46a7ae2d2 Mon Sep 17 00:00:00 2001
+From: Cswl Coldwind <cswl1337@gmail.com>
+Date: Thu, 29 Nov 2018 10:38:18 +0545
+Subject: [PATCH] Force Repo-sync to clone a single branch.
+
+---
+ project.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/project.py b/project.py
+index 142258e..88dd09b 100644
+--- a/project.py
++++ b/project.py
+@@ -1898,8 +1898,8 @@ class Project(object):
+       if self.relpath == '.repo/repo':
+         depth = None
+ 
+-    if depth:
+-      current_branch_only = True
++    depth = 100000 # Still needs to be enough or otherwise some server will break
++    current_branch_only = True
+ 
+     if ID_RE.match(self.revisionExpr) is not None:
+       is_sha1 = True
+-- 
+2.19.2
+
